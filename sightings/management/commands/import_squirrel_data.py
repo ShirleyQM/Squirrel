@@ -20,6 +20,7 @@ class Cammand(BaseCommand):
 
         sqs = []
         for dict_ in data:
+            print('Start Creating')
             sqs.append(Squirrel(
                 Latitude=dict_['Y'], #Notice the sequence for exportation
                 Longitude=dict_['X'],
@@ -29,13 +30,13 @@ class Cammand(BaseCommand):
                 Age=dict_['Age'] if str(dict_['Age'])!='nan' else 'Unknown',
                 Primary_Fur_Color = dict_['Primary Fur Color'] if str(dict_['Primary Fur Color'])!='nan' else 'Unknown',
                 Location = dict_['Location'] if str(dict_['Location'])!='nan' else 'Unknown',
-                Specific_Location = dict_['Specific Location'],
+                Specific_Location = str(dict_['Specific Location']),
                 Running = boolstr(dict_['Running']),
                 Chasing = boolstr(dict_['Chasing']),
                 Climbing = boolstr(dict_['Climbing']),
                 Eating = boolstr(dict_['Eating']),
                 Foraging = boolstr(dict_['Foraging']),
-                Other_Activities = dict_['Other Activities'],
+                Other_Activities = str(dict_['Other Activities']),
                 Kuks = boolstr(dict_['Kuks']),
                 Quaas = boolstr(dict_['Quaas']),
                 Moans = boolstr(dict_['Moans']),

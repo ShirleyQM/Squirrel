@@ -3,24 +3,24 @@ from django.utils.translation import gettext_lazy as _
 
 class Squirrel(models.Model):
     Latitude=models.DecimalField(
-            max_digits=20,
+            max_digits=15,
             decimal_places=13)
     Longitude=models.DecimalField(
-            max_digits=20,
+            max_digits=15,
             decimal_places=13)
     Unique_Squirrel_ID = models.CharField(
             primary_key=True,
-            max_length=30)
+            max_length=250)
 
     AM = 'AM'
     PM = 'PM'
     SHIFT_CHOICES = [
-            (AM, _('AM')),
-            (PM, _('PM')),
+            (AM, 'AM'),
+            (PM, 'PM'),
         ]
 
     Shift = models.CharField(
-        max_length=4,
+        max_length=250,
         help_text=_('Shift of a squirrel'),
         choices = SHIFT_CHOICES,
         default=AM,
@@ -33,12 +33,12 @@ class Squirrel(models.Model):
     UNKNOWN = 'Unknown'
 
     AGE_CHOICES = [
-        (ADULT, _('Adult')),
-        (JUV, _('Juvenile')),
-        (UNKNOWN, _('Unknown')),
+        (ADULT, 'Adult'),
+        (JUV, 'Juvenile'),
+        (UNKNOWN, 'Unknown'),
         ]
     Age = models.CharField(
-        max_length=10,
+        max_length=250,
         help_text=_('Age of the squirrel'),
         choices = AGE_CHOICES,
         default = ADULT,
@@ -49,10 +49,10 @@ class Squirrel(models.Model):
     BLACK = 'Black'
 
     COLOR_CHOICES = [
-        (GRAY, _('Gray')),
-        (CINNAMON, _('Cinnamon')),
-        (BLACK, _('Black')),
-        (UNKNOWN, _('Unknown')),
+        (GRAY, 'Gray'),
+        (CINNAMON, 'Cinnamon'),
+        (BLACK, 'Black'),
+        (UNKNOWN, 'Unknown'),
         ]
     Primary_Fur_Color = models.CharField(
         max_length=10,
@@ -64,18 +64,19 @@ class Squirrel(models.Model):
     PLANE = 'Ground Plane'
 
     LOCATION_CHOICES = [
-        (ABOVE, _('Above Ground')),
-        (PLANE, _('Ground Plane')),
-        (UNKNOWN, _('Unknown')),
+        (ABOVE, 'Above Ground'),
+        (PLANE, 'Ground Plane'),
+        (UNKNOWN, 'Unknown'),
         ]
 
     Location = models.CharField(
-        max_length = 254,
+        max_length = 250,
         choices = LOCATION_CHOICES,
         default = ABOVE
     )
 
-    Specific_Location = models.TextField(
+    Specific_Location = models.CharField(
+        max_length=250,
         blank = True,
     )
 
@@ -94,7 +95,8 @@ class Squirrel(models.Model):
     Foraging = models.BooleanField(
         help_text=_('Whether or not it was foraging'),
     )
-    Other_Activities = models.TextField(
+    Other_Activities = models.CharField(
+            max_length=250,
             blank = True,
         )
     Kuks = models.BooleanField(
@@ -119,4 +121,33 @@ class Squirrel(models.Model):
         help_text = _('Is the squirrel indifferent?'),
     )
     Runs_from = models.BooleanField()
-    
+   
+
+class Test(models.Model):
+    Latitude=models.DecimalField(
+            max_digits=15,
+            decimal_places=13)
+    AM = 'AM'
+    PM = 'PM'
+    SHIFT_CHOICES = [
+            (AM, 'AM'),
+            (PM, 'PM'),
+        ]
+
+    Shift = models.CharField(
+        max_length=250,
+        help_text=_('Shift of a squirrel'),
+        choices = SHIFT_CHOICES,
+        default=AM,
+        )
+
+    Date = models.DateField()
+
+    Moans = models.BooleanField(
+        help_text = _('The moan sounds like a whistle'),
+    )
+
+    Other_Activities = models.CharField(
+            max_length=250,
+            blank = True,
+        )   

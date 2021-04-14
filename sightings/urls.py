@@ -6,7 +6,7 @@ app_name='sightings'
 
 urlpatterns = [
     path('',views.index),
-    path('info/', views.all_squirrels,name='info'),
+    path('sightings/', views.all_squirrels,name='sightings'),
     path('map/',views.map),
     path('add/', views.add),
     path('stats/',views.statistics),

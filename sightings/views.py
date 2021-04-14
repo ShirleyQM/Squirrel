@@ -13,7 +13,7 @@ def all_squirrels(request):
     context = {
         'squirrels':squirrels,
     }
-    return render(request, 'sightings/info.html', context)
+    return render(request, 'sightings/sightings.html', context)
 
 def statistics(request):
     obj = Squirrel.objects
@@ -90,7 +90,7 @@ def update_squirrel(request, sid):
         form = SquirrelForm(request.POST, instance=squirrel)
         if form.is_valid():
             form.save()
-            return redirect(f'/sightings/info')
+            return redirect(f'/sightings/sightings')
     else:
         form = SquirrelForm(instance=squirrel)
 
@@ -104,7 +104,7 @@ def add(request):
         form = SquirrelForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(f'/sightings/info')
+            return redirect(f'/sightings/sightings')
 
     else:
         form = SquirrelForm()
