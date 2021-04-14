@@ -85,7 +85,7 @@ def map(request):
     return render(request, 'sightings/map.html', {'squirrels':obj})
 
 def update_squirrel(request, sid):
-    squirrel = Squirrel.objects.get(Unique_squirrel_id=sid)
+    squirrel = Squirrel.objects.get(Unique_Squirrel_ID=sid)
     if request.method == 'POST':
         form = SquirrelForm(request.POST, instance=squirrel)
         if form.is_valid():
@@ -97,7 +97,7 @@ def update_squirrel(request, sid):
     context = {
         'form': form,
     }
-    return render(request, 'sightings/edit.html', context)
+    return render(request, 'sightings/updatedata.html', context)
 
 def add(request):
     if request.method == 'POST':

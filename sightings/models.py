@@ -3,11 +3,11 @@ from django.utils.translation import gettext_lazy as _
 
 class Squirrel(models.Model):
     Latitude=models.DecimalField(
-            max_digits=9,
-            decimal_places=6)
-    Logitude=models.DecimalField(
-            max_digits=9,
-            decimal_places=6)
+            max_digits=20,
+            decimal_places=13)
+    Longitude=models.DecimalField(
+            max_digits=20,
+            decimal_places=13)
     Unique_Squirrel_ID = models.CharField(
             primary_key=True,
             max_length=30)
@@ -20,8 +20,8 @@ class Squirrel(models.Model):
         ]
 
     Shift = models.CharField(
-        max_length=2,
-        help_text=_('shift of squirrel'),
+        max_length=4,
+        help_text=_('Shift of a squirrel'),
         choices = SHIFT_CHOICES,
         default=AM,
         )
@@ -38,7 +38,7 @@ class Squirrel(models.Model):
         (UNKNOWN, _('Unknown')),
         ]
     Age = models.CharField(
-        max_length=8,
+        max_length=10,
         help_text=_('Age of the squirrel'),
         choices = AGE_CHOICES,
         default = ADULT,
@@ -55,7 +55,7 @@ class Squirrel(models.Model):
         (UNKNOWN, _('Unknown')),
         ]
     Primary_Fur_Color = models.CharField(
-        max_length=8,
+        max_length=10,
         choices = COLOR_CHOICES,
         default = GRAY,
     )
@@ -63,15 +63,15 @@ class Squirrel(models.Model):
     ABOVE = 'Above Ground'
     PLANE = 'Ground Plane'
 
-    LOCATION_CHOICE = [
+    LOCATION_CHOICES = [
         (ABOVE, _('Above Ground')),
         (PLANE, _('Ground Plane')),
         (UNKNOWN, _('Unknown')),
         ]
 
     Location = models.CharField(
-        max_length = 20,
-        choices = LOCATION_CHOICE,
+        max_length = 254,
+        choices = LOCATION_CHOICES,
         default = ABOVE
     )
 

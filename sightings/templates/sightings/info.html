@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+
+<body>
+    <div class="w3-container">
+        <h2>Squirrel List</h2>
+        <a href="../sightings/insertdata/" class="w3-button w3-round-large w3-section w3-teal w3-ripple" >Add a New Squirrel</a>
+        
+            {% for squirrel in squirrels %}
+        <ul class="w3-ul w3-card-4 style="width:80%">
+            <li class="w3-bar">
+            <a href="../sightings/{{squirrel.Unique_Squirrel_ID}}/" class="w3-bar-item w3-button w3-edit w3-xsmall w3-right">Update</a>
+            <img src="https://t4.ftcdn.net/jpg/01/40/37/71/360_F_140377141_91fQfoL2nnHAKxf3mZtwbaQvOKZnsXHs.jpg" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
+
+            <div class="w3-bar-item">
+                <span class="w3-large">{{squirrel.Unique_Squirrel_ID}}</span><br>
+                <span>Date: {{squirrel.Date}}</span>
+            </div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</body>
+</html>
