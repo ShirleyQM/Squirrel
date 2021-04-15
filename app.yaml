@@ -1,8 +1,10 @@
-runtime: python37
+runtime: python38
 
 handlers:
-- url: /static
-  static_dir: collected-static/
+    # This configures Google App Engine to serve the files in the app's
+    # static directory.
+     - url: /static
+       static_dir: static
 
-- url: /.*
-  script: auto
+     - url: /.*
+       script: auto
