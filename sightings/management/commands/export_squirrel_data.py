@@ -1,13 +1,15 @@
 from django.core.management.base import BaseCommand
+from sightings.models import Squirrel
+import csv
   
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
-        parser.add_argument('squirrel_data.csv')
+        parser.add_argument('csv_file')
 
     def handle(self, *args, **options):
         colnames = [f.name for f in Squirrel._meta.fields]
-        with open(options['squirrel_data.csv'], 'w') as fo:
+        with open(options['csv_file'], 'w') as fo:
             writer = csv.writer(fo)
             tup = ['Latitude',
                     'Longitude',
@@ -36,5 +38,5 @@ class Command(BaseCommand):
             writer.writerow(tup)
 
             for row in Squirrel.objects.all():
-                rowOk = [getattr(row, field) for field in fields_list]
+                rowOk = [getattr(row, field) for field in tup]
                 writer.writerow(rowOk)
