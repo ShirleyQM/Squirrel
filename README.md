@@ -15,10 +15,10 @@ All required files are in this repository.
 
 ## Detail
 ### Homepage
-This page is the index. You can go to anywhere you like: Squirrel Map, Squirrel sightings, Add a squirrel's information or Squirrel Statistics.
+This page is the index. You can go anywhere you like: Squirrel Map, Squirrel sightings, Add a squirrel's information or Squirrel Statistics.
 
 ### Squirrel Map
-This map shows the location of squirrels in our database. It might be a little bit dense.
+This map shows the location of squirrels in our database. It might be a little bit dense, however.
 
 ### Squirrel sightings
 On this page, you can see entries about squirrels including ID and Date. For more details, please refer to the link: "details or update". This link will bring you to an editable detail page.
@@ -34,7 +34,7 @@ This page shows some facts about the squirrel.
 Files in /sightings are models, views, urls, templates and urls.
 Other configuration files are in /project.
 The master branch should be used.
-There may be something different in my hw from the requirement.
+There may be something different in my project from the requirement.
 - I did not deploy it because I met a lot of trouble. However, it runs well on local vm. I am sorry about that.
 - When building models, I set some fields to be not-null through selection box. For example, the 'Age' field has 3 choices: 'Adult', 'Juvenile', 'Unknown'. 
 - When importing data, I found the original csv downloaded from the link is duplicated. So I remove the duplicated ones. I also add some test cases.
