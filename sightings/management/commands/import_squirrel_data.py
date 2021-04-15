@@ -20,10 +20,9 @@ class Cammand(BaseCommand):
 
         sqs = []
         for dict_ in data:
-            print('Start Creating')
-            sqs.append(Squirrel(
-                Latitude=dict_['Y'], #Notice the sequence for exportation
-                Longitude=dict_['X'],
+            s=Squirrel(
+                Latitude=float(dict_['Y']), #Notice the sequence for exportation
+                Longitude=float(dict_['X']),
                 Unique_Squirrel_ID=dict_['Unique Squirrel ID'],
                 Shift=dict_['Shift'],
                 Date='-'.join([str(dict_['Date'])[4:8], str(dict_['Date'])[0:2], str(dict_['Date'])[2:4]]),
@@ -44,6 +43,7 @@ class Cammand(BaseCommand):
                 Tail_twitches = boolstr(dict_['Tail twitches']),
                 Approaches = boolstr(dict_['Approaches']),
                 Indifferent = boolstr(dict_['Indifferent']),
-                Runs_from = boolstr(dict_['Runs from'])))
+                Runs_from = boolstr(dict_['Runs from']))
+            sqs.append(s)
 
         Squirrel.objects.bulk_create(sqs)

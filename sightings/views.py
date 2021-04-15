@@ -28,9 +28,9 @@ def statistics(request):
     p_juv = s_juv/s_cnt
     
     #Color stats
-    s_gray = obj.filter(Primary_fur_color='Gray').count()
-    s_cin = obj.filter(Primary_fur_color='Cinnamon').count()
-    s_black = obj.filter(Primary_fur_color='Black').count()
+    s_gray = obj.filter(Primary_Fur_Color='Gray').count()
+    s_cin = obj.filter(Primary_Fur_Color='Cinnamon').count()
+    s_black = obj.filter(Primary_Fur_Color='Black').count()
     p_gray = s_gray/s_cnt
     p_cin = s_cin/s_cnt
     p_black = s_black/s_cnt
@@ -45,11 +45,11 @@ def statistics(request):
     s_run_chase = obj.filter(Running=True, Chasing=True).count()
     s_eat_forage = obj.filter(Eating=True, Foraging=True).count()
     p_r = s_run_chase/s_cnt
-    p_e = p_eat_forate/s_cnt
+    p_e = s_eat_forage/s_cnt
     
     #Shift stats
-    s_am = obj.filter(Shift='AM')
-    s_pm = obj.filter(Shift='PM')
+    s_am = obj.filter(Shift='AM').count()
+    s_pm = obj.filter(Shift='PM').count()
     p_am = s_am/s_cnt
     p_pm = s_pm/s_cnt
     
@@ -59,10 +59,10 @@ def statistics(request):
         's_juv':s_juv,
         's_gray':s_gray,
         's_cin':s_cin,
-        's_black':s_black ,
+        's_black':s_black,
         's_ground':s_ground,
         's_above':s_above,
-        ' s_run_chase': s_run_chase,
+        's_run_chase': s_run_chase,
         's_eat_forage':s_eat_forage,
         's_am':s_am,
         's_pm':s_pm,
@@ -84,13 +84,14 @@ def map(request):
     obj = Squirrel.objects.all()
     return render(request, 'sightings/map.html', {'squirrels':obj})
 
-def update_squirrel(request, sid):
-    squirrel = Squirrel.objects.get(Unique_Squirrel_ID=sid)
+def update_squirrel(request, Unique_squirrel_id):
+    # This method will show the data and it is editable
+    squirrel = Squirrel.objects.get(Unique_Squirrel_ID=Unique_squirrel_id)
     if request.method == 'POST':
         form = SquirrelForm(request.POST, instance=squirrel)
         if form.is_valid():
             form.save()
-            return redirect(f'/sightings/sightings')
+            return redirect('/sightings/')
     else:
         form = SquirrelForm(instance=squirrel)
 
@@ -104,7 +105,7 @@ def add(request):
         form = SquirrelForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(f'/sightings/sightings')
+            return redirect('/sightings/')
 
     else:
         form = SquirrelForm()
@@ -113,5 +114,4 @@ def add(request):
         'form': form,
     }
 
-    return render(request, 'sightings/add.html', context)
-
+    return render(request, 'sightings/add.html', context) 
