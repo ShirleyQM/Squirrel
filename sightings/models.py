@@ -121,33 +121,4 @@ class Squirrel(models.Model):
         help_text = _('Is the squirrel indifferent?'),
     )
     Runs_from = models.BooleanField()
-   
-
-class Test(models.Model):
-    Latitude=models.DecimalField(
-            max_digits=15,
-            decimal_places=13)
-    AM = 'AM'
-    PM = 'PM'
-    SHIFT_CHOICES = [
-            (AM, 'AM'),
-            (PM, 'PM'),
-        ]
-
-    Shift = models.CharField(
-        max_length=250,
-        help_text=_('Shift of a squirrel'),
-        choices = SHIFT_CHOICES,
-        default=AM,
-        )
-
-    Date = models.DateField()
-
-    Moans = models.BooleanField(
-        help_text = _('The moan sounds like a whistle'),
-    )
-
-    Other_Activities = models.CharField(
-            max_length=250,
-            blank = True,
-        )   
+    
