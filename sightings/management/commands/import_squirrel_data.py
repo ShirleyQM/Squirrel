@@ -44,6 +44,4 @@ class Cammand(BaseCommand):
                 Approaches = boolstr(dict_['Approaches']),
                 Indifferent = boolstr(dict_['Indifferent']),
                 Runs_from = boolstr(dict_['Runs from']))
-            sqs.append(s)
-
-        Squirrel.objects.bulk_create(sqs)
+            s.save() 
