@@ -1,6 +1,6 @@
 # Squirrel
 This is my final project.
-#### Group 29 Miao Qi(mq2237)
+**Group 29 Miao Qi(mq2237) Section 1**
 
 ## Introduction
 This app is used to track the information and location of squirrels in the Central Park of New York. 
