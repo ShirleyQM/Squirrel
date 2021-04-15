@@ -44,4 +44,4 @@ class Cammand(BaseCommand):
                 Approaches = boolstr(dict_['Approaches']),
                 Indifferent = boolstr(dict_['Indifferent']),
                 Runs_from = boolstr(dict_['Runs from']))
-            s.save() 
+            s.save()
